@@ -4,8 +4,6 @@ class Angle:
         all_sec = 3600* deg + 60 * minute + sec
         full_circles = int(all_sec/(360*60*60))
         all_sec -= full_circles * 360 * 60 * 60
-        if all_sec < 0:
-            all_sec += 360 * 60 * 60
         self.deg = int(all_sec/3600)
         self.minute = int((all_sec - 3600* self.deg)/60)
         self.sec = all_sec - self.deg * 3600 - self.minute * 60
@@ -65,10 +63,21 @@ class Angle:
         if val1 != val2:
             return True
         else:
-            return False    
+            return False  
+              
+def up_culm(self, lat):  
+    if lat < self:
+        return Angle(90, 0, 0) - self + lat
+    else:
+        return Angle(90, 0, 0) - lat + self     
+    
+def low_culm(self, lat):
+    return lat+self - Angle(90, 0, 0)            
         
-ang1 = Angle(361, 20, 71)
-ang2 = Angle(1, 20, 81)
-ang3 = ang1-ang2
-ang1<ang2
-print(str(ang1<ang2))
+phi = Angle(59, 57, 71)
+delta = Angle(-16, -42, -58)
+
+print(str(up_culm(delta, phi)))
+print(str(low_culm(delta, phi)))
+
+
