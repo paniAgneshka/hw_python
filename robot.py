@@ -26,14 +26,14 @@ class Robot(object):
         self.x=f.readline()
         self.y=f.readline()
         self.path = [[self.x, self.y]]
-
         f.close
+        return Robot(self.x, self.y)    
     def save(self):   
         f= open('curr_posit.txt', 'w+')
         x = self.path[-1][0]
         y = self.path[-1][1]
-        f.writelines(str(x) \n)
-        f.writelines(str(y))
+        f.writelines('%d\n' % x)
+        f.writelines('%d\n' % y)
         f.close
 cat = Robot(-1, 5)
 cat.move_down(7)
@@ -42,3 +42,5 @@ cat.move_up(1)
 cat.move_right(4)
 cat.show()
 cat.save()
+dog=cat.load()
+dog.show()
