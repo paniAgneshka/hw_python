@@ -64,9 +64,16 @@ class Angle:
             return True
         else:
             return False  
+    def __abs__(self):
+        all_sec=abs(3600* self.deg + 60 * self.minute + self.sec)
+        self.deg = int(all_sec/3600)
+        self.minute = int((all_sec - 3600* self.deg)/60)
+        self.sec = all_sec - self.deg * 3600 - self.minute * 60
+    
+        return Angle(self.deg, self.minute, self.sec)
               
 def up_culm(self, lat):  
-    if lat < self:
+    if abs(lat) < abs(self):
         return Angle(90, 0, 0) - self + lat
     else:
         return Angle(90, 0, 0) - lat + self     
