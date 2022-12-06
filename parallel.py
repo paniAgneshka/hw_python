@@ -4,13 +4,13 @@ from math import floor
 
 
 def func(n):
-    sum_ = 0
-    for i in range(floor(n)):
-        sum_ = sum_ + 1
-    return sum_    
+    fact_ = 1
+    for i in range(1,floor(n)):
+        fact_ = fact_ * i
+    return fact_    
 
 if __name__=='__main__':
-    number = 30000000
+    number = 100001
     flow = 1
     lead_time = []
     while 1==1:
