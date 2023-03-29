@@ -21,7 +21,8 @@ for p in range(4, 104, 4):
     qualities.append(np.mean(qual))
     sigmas.append(np.std(qual))
 
-plt.xlabel("Proportion of  coefficients, %")
+plt.xlabel("Proportion of saved coefficients, %")
+plt.ylabel("Quality")
 plt.errorbar(range(4, 104, 4), qualities, yerr=sigmas, fmt="o")
 fig = plt.gcf()
 fig.set_size_inches(12, 6)
